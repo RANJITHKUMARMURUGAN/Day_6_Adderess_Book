@@ -1,5 +1,5 @@
 import java.util.*;
-class Address {
+class AddressBook {
 	private String firstName;
 	private String lastName;
 	private String city;
@@ -7,8 +7,7 @@ class Address {
 	private String pin;
 	private String mobileNo;
 	private String email;
-
-	AddressBook(String firstName, String lastName, String city, String state, String pin, String mobileNo,String email) {
+	public AddressBook(String firstName, String lastName, String city, String state, String pin, String mobileNo,String email) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -60,12 +59,18 @@ class Address {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-}
-public class Adderess_Book {
-	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
 
-		Address add[] = new Address[10];
+	@Override
+	public String toString() {
+		return "AddressBook [firstName=" + firstName + ", lastName=" + lastName + ", city=" + city + ", state=" + state
+				+ ", pin=" + pin + ", mobileNo=" + mobileNo + ", email=" + email + "]";
+	}
+}
+public class Adderess_book {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		AddressBook add[] = new AddressBook[10];
 		int count = 0;
 		String firstName;
 		String lastName;
@@ -76,17 +81,18 @@ public class Adderess_Book {
 		String email;
 		int choice=0;
 		do {
-			System.out.println("1. Add Details 2. Update Details 3. Delete Details 4.Show All Details");
+			System.out.println("1. Add Details 2. Update Details 3. Delete Details 4.View the Detatils 5.exit");
 			System.out.println("Enter your choice");
-			 choice = sc.nextInt();
+			choice = sc.nextInt();
 
 			switch(choice) {
 
 			case 1: System.out.println("Enter how many Address Details you want to add");
 			int num=sc.nextInt();
 			for(int i=0;i<num;i++) {
-			System.out.println("Enter first and last name");
+			System.out.println("Enter first name");
 			firstName = sc.next();
+			System.out.println("Enter the Last name")
 			lastName = sc.next();
 			System.out.println("Enter city");
 			city = sc.next();
@@ -159,11 +165,11 @@ public class Adderess_Book {
 				System.out.println(add[i]); 
 			}
 			break;
+			case 5: System.exit(0);
+				break;
 
 			default: System.out.println("You entered invalid choice");
 			}
 		}while(choice!=0);
-
-
 	}
 }
